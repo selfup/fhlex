@@ -30,4 +30,6 @@ A basic command to read USB mode:
 
 Should receive: `ZZMD01` if USB is on.
 
-Here is the **PowerSDR** Flex CAT command reference guide: https://www.flexradio.com/downloads/powersdr-cat-command-reference-guide/
+Here is the **PowerSDR** Flex CAT command reference guide:
+
+https://www.flexradio.com/downloads/powersdr-cat-command-reference-guide/
