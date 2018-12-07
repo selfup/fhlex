@@ -20,22 +20,11 @@ const (
 )
 
 func main() {
-	hexCmd := strings.Split(cmd, " ")
-	byteCmd := strings.Join(hexCmd, "")
-
-	baudInt, err := strconv.ParseInt(baud, 10, 32)
-	if err != nil {
-		panic(err)
-	}
-
-	data, err := hex.DecodeString(byteCmd)
-	if err != nil {
-		panic(err)
-	}
+	baudInt, data := CreateBaudRateAndCmdData()
 
 	portOptions := serial.OpenOptions{
 		PortName:        comPort,
-		BaudRate:        uint(baudInt),
+		BaudRate:        baudInt,
 		DataBits:        dataBits,
 		StopBits:        stopBits,
 		MinimumReadSize: readSize,
@@ -71,4 +60,23 @@ func FormatBuf(readBuf []byte) (string, []byte) {
 	outputBuf := string(trimmedBuf)
 
 	return outputBuf, trimmedBuf
+}
+
+// CreateBaudRateAndCmdData grabs user defined cmd and baud
+// to convert for serial port library
+func CreateBaudRateAndCmdData() (uint, []byte) {
+	hexCmd := strings.Split(cmd, " ")
+	byteCmd := strings.Join(hexCmd, "")
+
+	baudInt, err := strconv.ParseInt(baud, 10, 32)
+	if err != nil {
+		panic(err)
+	}
+
+	data, err := hex.DecodeString(byteCmd)
+	if err != nil {
+		panic(err)
+	}
+
+	return uint(baudInt), data
 }
