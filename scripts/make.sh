@@ -1,1 +1,1 @@
-gcc -o main libc/main.c
+go build -o main main.go
