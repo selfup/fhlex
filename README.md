@@ -4,8 +4,8 @@ Flex radio hex CAT commands
 
 ## Interestings
 
-ZZ starts all commands
-; terminates all commands
+- `ZZ` starts all commands
+- `;` terminates all commands
 
 #### Character to HEX
 
