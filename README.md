@@ -9,7 +9,9 @@ Flex radio hex CAT commands
 
 #### Character to HEX
 
-```
+Example:
+
+```ocaml
 Z == 7A
 M == 6D
 D == 64
@@ -18,9 +20,7 @@ D == 64
 
 Please refer to:
 
-1. docs/ascii_conversion_table.html
 1. https://selfup.github.io/fhlex/ascii_conversion_table.html
-1. https://www.eso.org/~ndelmott/ascii.html
 
 ## Flex CAT
 
