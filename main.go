@@ -11,8 +11,9 @@ import (
 )
 
 const (
-	cmd      = "7A 7A 73 6E 3B"
-	comPort  = "COM3"
+	// Example of READ USB MODE
+	cmd      = "7A 7A 6D 64 3B"
+	comPort  = "COM4"
 	baud     = "9600"
 	dataBits = 8
 	stopBits = 1
@@ -44,12 +45,13 @@ func main() {
 
 	readBuf := make([]byte, 100)
 
-	if _, err := port.Read(readBuf); err != nil {
+	if count, err := port.Read(readBuf); err != nil {
 		log.Panic(err)
 	} else {
 		outputBuf, _ := FormatBuf(readBuf)
 
-		log.Println(outputBuf)
+		log.Println("-- bytes received: ", count)
+		log.Println("-- msg received: ", outputBuf)
 	}
 }
 
@@ -66,6 +68,9 @@ func FormatBuf(readBuf []byte) (string, []byte) {
 // to convert for serial port library
 func CreateBaudRateAndCmdData() (uint, []byte) {
 	hexCmd := strings.Split(cmd, " ")
+
+	log.Println("-- pre parsed cmd: ", hexCmd)
+
 	byteCmd := strings.Join(hexCmd, "")
 
 	baudInt, err := strconv.ParseInt(baud, 10, 32)
@@ -77,6 +82,8 @@ func CreateBaudRateAndCmdData() (uint, []byte) {
 	if err != nil {
 		panic(err)
 	}
+
+	log.Println("-- sending decimal: ", data)
 
 	return uint(baudInt), data
 }
