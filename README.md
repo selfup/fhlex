@@ -18,9 +18,7 @@ D == 64
 ; == 3B
 ```
 
-Please refer to:
-
-1. https://selfup.github.io/fhlex/ascii_conversion_table.html
+Please refer to the [ascii_conversion_table](https://selfup.github.io/fhlex/ascii_conversion_table.html) for converting Flex CAT commands :smile:
 
 ## Flex CAT
 
